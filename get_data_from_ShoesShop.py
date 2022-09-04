@@ -7,8 +7,9 @@ app = Flask(__name__)
 @app.route("/shoesshop")
 def get_data_from_ShoesShop():
     """ Returns data from Shoes Shop's orders database which fulfill search conditions passed by arguments. 
-    May also return error message in case of query/connection errors.
-    Query construction example - http://127.0.0.1:5000/shoesshop?email=b@b.com&order_number=1230 """
+    Will also return error message in case of query/connection errors.
+    Query construction example - http://127.0.0.1:5000/shoesshop?email=b@b.com&order_number=1230 
+    Also deployed as a Linode's container at http://172.105.244.153:5000 """
 
     email = request.args.get('email')
     order_number = request.args.get('order_number')
@@ -25,7 +26,7 @@ def get_data_from_ShoesShop():
                     return result
             if result == 0:
                 return  {
-                "Error message": "No record found in Shoes Shop database", 
+                "Error message": "No record found in Shoes Shop orders database", 
                  }
         else:
             return {
